@@ -38,7 +38,7 @@ double Gimbal_vel_ctrl::pControl(double desired, double current, double kp)
 
 void Gimbal_vel_ctrl::targetTrackingControl(double gain)
 {   
-    R_w2c = cam.R_B2C()*s.R_w2b.inverse();
+    R_w2c = cam.R_B2C()*s.R_w2b;
     r_tc_c = R_w2c*(t.r - s.r_c);
 
     m = cam.R_B2C()*cam.t_B2C();

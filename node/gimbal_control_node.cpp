@@ -102,6 +102,8 @@ int main(int argc, char** argv)
             target.setTwist(target_est.getTwist());
             std::cout << "Vision tracking mode\n";
         }
+        else
+            std::cout << "Ground truth tracking mode\n";
 
         target_eigen = mavMsg2Eigen(target);
         self_eigen = mavMsg2Eigen(self);
