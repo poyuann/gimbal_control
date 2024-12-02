@@ -41,7 +41,7 @@ void Gimbal_vel_ctrl::targetTrackingControl(double gain)
     R_w2c = cam.R_B2C()*s.R_w2b;
     r_tc_c = R_w2c*(t.r - s.r_c);
 
-    m = cam.R_B2C()*cam.t_B2C();
+    m = R_w2c*cam.t_B2C();
     x(0) = r_tc_c(0)/r_tc_c(2);
     x(1) = r_tc_c(1)/r_tc_c(2);
     x(2) = 1/r_tc_c(2);
@@ -55,8 +55,8 @@ void Gimbal_vel_ctrl::targetTrackingControl(double gain)
     L2 << -x(2), 0, x(0)*x(2), x(0)*(x(1) + m(1)*x(2)), -(1 + x(0)*x(0) + x(2)*(m(2) + m(0)*x(0))), x(1) + m(1)*x(2),
             0, -x(2), x(1)*x(2), 1 + x(1)*x(1) + x(2)*(m(2) + m(1)*x(1)), -x(1)*(x(0)+m(0)*x(2)), -x(0) - m(0)*x(2);
 
-    //vel << V_s_c - V_t_c, R_w2c*s.omega_c;
-    vel << Eigen::Vector3d::Zero(), R_w2c*s.omega_c;
+    vel << V_s_c - V_t_c, R_w2c*s.omega_c;
+    // vel << Eigen::Vector3d::Zero(), R_w2c*s.omega_c;
 
     e << x(0), x(1);
 

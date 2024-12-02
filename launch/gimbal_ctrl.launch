@@ -4,16 +4,16 @@
         <arg name="vehicle" default="typhoon_h480"/>
         <arg name="ID" default="0"/>
 
-        <group ns="$(arg vehicle)_1">
+        <group ns="$(arg vehicle)1">
                 <node name="gimbal_control_node" pkg="gimbal_control" type="gimbal_control_node" output="screen"></node>
                 <param name="ID" value="1" />
         </group>
-        <group ns="$(arg vehicle)_2">
+        <group ns="$(arg vehicle)2">
                 <node name="gimbal_control_node" pkg="gimbal_control" type="gimbal_control_node" output="screen"></node>
                 <param name="ID" value="2" />
         </group>
-        <group ns="$(arg vehicle)_3">
-                <node name="gimbal_control_node" pkg="gimbal_control" type="gimbal_control_node" ></node>
+        <group ns="$(arg vehicle)3">
+                <node name="gimbal_control_node" pkg="gimbal_control" type="gimbal_control_node" output="screen"></node>
                 <param name="ID" value="3" />
         </group>
 </launch>
